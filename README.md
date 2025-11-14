@@ -83,3 +83,79 @@ A full-stack system for managing laundry order booking, tracking, and delivery s
 ```bash
 git clone <YOUR_REPO_URL>
 cd laundry-management-system
+
+🖥 Backend Setup (Spring Boot)
+Install dependencies:
+cd backend
+mvn clean install
+
+Run backend:
+mvn spring-boot:run
+
+
+Backend runs on:
+➡ http://localhost:8080
+
+🌐 Frontend Setup (React)
+Install dependencies:
+cd frontend
+npm install
+
+Run frontend:
+npm run dev
+
+
+Frontend runs on:
+➡ http://localhost:3000
+
+🐳 Run Entire System with Docker
+docker-compose up --build
+
+
+This will run:
+
+MongoDB
+
+Spring Boot API
+
+React Frontend
+
+| Method | Endpoint                | Description               |
+| ------ | ----------------------- | ------------------------- |
+| POST   | /api/orders             | Place new order           |
+| GET    | /api/orders/{id}        | Get order details         |
+| PUT    | /api/orders/{id}/status | Update status             |
+| GET    | /api/orders/daily/pdf   | Download daily PDF report |
+| POST   | /api/auth/login         | JWT Login                 |
+
+📝 Sample Order JSON
+{
+  "customerId": "67641abcd1234",
+  "pickupDate": "2025-01-21",
+  "items": [
+    { "itemId": "shirt123", "quantity": 3 }
+  ]
+}
+
+📸 Screenshots (Optional)
+
+Add your UI screenshots here:
+
+/assets/screenshot1.png
+/assets/screenshot2.png
+
+🤝 Contributing
+
+Fork the project
+
+Create feature branch
+
+Commit & push
+
+Open Pull Request
+
+📜 License
+
+This project is licensed under the MIT License.
+
+
