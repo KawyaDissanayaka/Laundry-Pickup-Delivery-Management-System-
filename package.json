@@ -1,0 +1,13 @@
+{
+  "name": "laundry-pickup-delivery-management-system",
+  "version": "1.0.0",
+  "description": "Laundry Pickup & Delivery Management System",
+  "private": true,
+  "scripts": {
+    "start": "cd Frontend && npm start",
+    "start:frontend": "cd Frontend && npm start",
+    "build:frontend": "cd Frontend && npm run build",
+    "install:all": "npm install && cd Frontend && npm install"
+  },
+  "devDependencies": {}
+}
