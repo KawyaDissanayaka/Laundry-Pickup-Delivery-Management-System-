@@ -45,7 +45,7 @@ A full-stack system for managing laundry order booking, tracking, and delivery s
 - MongoDB
 
 ### **DevOps**
-- Docker  
+- Docker 
 - Docker Compose  
 - Git (Feature Branch Workflow)
 
