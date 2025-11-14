@@ -1,80 +1,85 @@
-# Laundry-Pickup-Delivery-Management-System-
-A complete end-to-end system built using Spring Boot, React, and MongoDB for managing laundry shop operations with online booking, real-time tracking, delivery scheduling, and automated notifications.
+# 🧺 Laundry Pickup & Delivery Management System  
+A full-stack system for managing laundry order booking, tracking, and delivery scheduling using **Spring Boot**, **React**, and **MongoDB**.
 
-🔹 Problem
+---
 
-Traditional laundry shops record orders manually, leading to:
-	•	misplaced order records
-	•	difficulty tracking customer information
-	•	no real-time order updates
-	•	inefficient pickup/delivery scheduling
+## 🚀 Features
 
-This system solves those pain points through automation and digitization.
+### 👤 Customer Features
+- Online laundry booking  
+- Track order status (Pickup → Processing → Ready → Delivery)  
+- View past orders  
+- Receive SMS/Email notifications  
 
-⸻
+### 🛠 Admin Features
+- Manage customers  
+- Add/edit laundry items  
+- Assign orders to delivery agents  
+- Export daily order summary as **PDF**  
+- View statistics & reports  
 
-🔹 Key Features
+### 🚚 Driver Features
+- View assigned pickups/deliveries  
+- Update order status (Picked / Delivered)  
 
-🧾 Customer & Order Management
-	•	Create and track laundry orders
-	•	View order history & live status updates
-	•	Automatic price calculation
+---
 
-🚚 Pickup & Delivery Workflow
-	•	Assign orders to delivery agents
-	•	Driver dashboard for daily tasks
-	•	Route + status tracking (Pickup → Processing → Ready → Delivery)
+## 🧪 Tech Stack
 
-📢 Notifications
-	•	SMS / Email alerts when:
-	•	Order is placed
-	•	Laundry is ready
-	•	Out for delivery
-	•	Delivered
+### **Backend**
+- Spring Boot  
+- Spring Data MongoDB  
+- Spring Security (JWT Auth)  
+- Spring Scheduler  
+- JavaMail (Email Notifications)  
+- Twilio SMS API  
+- iText/OpenPDF (PDF Export)
 
-📅 Admin & Driver Dashboards
-	•	Role-based logins (Customer / Admin / Driver)
-	•	Admin panel for:
-	•	Managing orders
-	•	Managing customers
-	•	Adding delivery agents
-	•	Scheduling delivery assignments
+### **Frontend**
+- React (Vite)  
+- Axios  
+- React Router  
+- Tailwind / Material UI (optional)
 
-📄 PDF Export
-	•	Export daily order reports as downloadable PDF
-	•	Useful for shop accounting or daily summaries
+### **Database**
+- MongoDB
 
-⸻
+### **DevOps**
+- Docker  
+- Docker Compose  
+- Git (Feature Branch Workflow)
 
-🔹 Tech Stack
+---
 
-Backend – Spring Boot
-	•	Spring Web
-	•	Spring Data MongoDB
-	•	Spring Security + JWT
-	•	Scheduling (Spring Scheduler)
-	•	Email + SMS integration
-	•	PDF generation (iText/OpenPDF)
+## 📁 Project Structure
+/project-root
+│── backend/
+│ ├── src/main/java/com/laundry
+│ │ ├── controller/
+│ │ ├── service/
+│ │ ├── repository/
+│ │ └── model/
+│ ├── resources/
+│ │ └── application.yml
+│ └── pom.xml
+│
+│── frontend/
+│ ├── src/
+│ │ ├── components/
+│ │ ├── pages/
+│ │ ├── api/
+│ │ └── App.jsx
+│ ├── package.json
+│ └── vite.config.js
+│
+└── docker-compose.yml
 
-Frontend – React
-	•	React + Vite
-	•	Axios for API calls
-	•	Role-based UI & dashboards
 
-Database – MongoDB
-	•	Document-based NoSQL
-	•	Collections: Customers, Orders, Items, DeliveryAgents
+---
 
-DevOps
-	•	Docker + Docker Compose
-	•	Git feature-branch workflow
+## ⚙️ Installation & Setup
 
-⸻
-
-🔹 Core Modules
-	•	Customer Management
-	•	Laundry Item & Service Catalog
-	•	Order Processing
-	•	Delivery Management
-	•	Notification Service
-	•	Daily PDF Reporting
+### 1️⃣ Clone Repository
+```bash
+git clone <YOUR_REPO_URL>
+cd laundry-management-system
