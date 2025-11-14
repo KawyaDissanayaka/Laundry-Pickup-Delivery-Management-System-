@@ -1,0 +1,5 @@
+.nav{background:#0b74de;color:#fff;padding:12px 0}
+.nav-container{width:96%;max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:700;color:#fff;text-decoration:none;font-size:1.25rem}
+.links a{color:#e6f3ff;margin-left:16px;text-decoration:none}
+.links a.active{border-bottom:2px solid rgba(255,255,255,0.9);padding-bottom:4px}
