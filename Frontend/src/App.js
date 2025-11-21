@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-import { ThemeProvider, createTheme, CssBaseline, Box, AppBar, Toolbar, IconButton, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Typography, Divider, useMediaQuery } from '@mui/material';
-import { Menu as MenuIcon, Close as CloseIcon, Home as HomeIcon, AddBox as AddBoxIcon, ListAlt as ListAltIcon, Dashboard as DashboardIcon, DirectionsCar as DirectionsCarIcon } from '@mui/icons-material';
+import { ThemeProvider, createTheme, CssBaseline, Box, AppBar, Toolbar, Typography, Container, Paper, useMediaQuery } from '@mui/material';
 import OrderForm from './pages/OrderForm';
 import OrderList from './pages/OrderList';
 import OrderDetails from './pages/OrderDetails';
@@ -27,93 +26,105 @@ const theme = createTheme({
 });
 
 function AppContent() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const navigate = useNavigate();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const navItems = [
-    { label: 'Home', icon: <HomeIcon />, path: '/' },
-    { label: 'Book Pickup', icon: <AddBoxIcon />, path: '/book' },
-    { label: 'My Orders', icon: <ListAltIcon />, path: '/orders' },
-    { label: 'Admin', icon: <DashboardIcon />, path: '/admin' },
-    { label: 'Driver', icon: <DirectionsCarIcon />, path: '/driver' },
+    { label: 'Home', path: '/' },
+    { label: 'Book Pickup', path: '/book' },
+    { label: 'My Orders', path: '/orders' },
+    { label: 'Admin', path: '/admin' },
+    { label: 'Driver', path: '/driver' },
   ];
 
-  const handleNavClick = (path) => {
-    navigate(path);
-    setDrawerOpen(false);
-  };
-
-  const drawer = (
-    <Box sx={{ width: 280 }}>
-      <Box sx={{ p: 2.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main' }}>LaundryPro</Typography>
-        {isMobile && <IconButton onClick={() => setDrawerOpen(false)} size="small"><CloseIcon /></IconButton>}
-      </Box>
-      <Divider />
-      <List sx={{ pt: 2 }}>
-        {navItems.map((item) => (
-          <ListItemButton 
-            key={item.path} 
-            onClick={() => handleNavClick(item.path)} 
-            sx={{ mx: 1, mb: 1, borderRadius: 1, '&:hover': { bgcolor: 'action.hover' } }}
-          >
-            <ListItemIcon sx={{ minWidth: 40, color: 'primary.main' }}>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.label} />
-          </ListItemButton>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {/* AppBar */}
-      <AppBar position="sticky" sx={{ boxShadow: 2, background: 'linear-gradient(to right, #1976d2, #1565c0)' }}>
-        <Toolbar>
-          <IconButton color="inherit" onClick={() => setDrawerOpen(true)} sx={{ mr: 2 }} size="large">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700 }}>LaundryPro Management System</Typography>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: 'background.default' }}>
+      {/* AppBar - Centered */}
+      <AppBar position="sticky" sx={{ boxShadow: 1, background: 'linear-gradient(to right, #1976d2, #1565c0)' }}>
+        <Toolbar sx={{ maxWidth: '1400px', margin: '0 auto', width: '100%' }}>
+          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700, textAlign: 'center' }}>
+            LaundryPro Management System
+          </Typography>
         </Toolbar>
       </AppBar>
 
-      {/* Main Content */}
-      <Box sx={{ display: 'flex', flex: 1 }}>
-        {/* Drawer (Responsive) */}
-        {isMobile ? (
-          <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-            {drawer}
-          </Drawer>
-        ) : (
-          <Drawer 
-            variant="permanent" 
-            sx={{ 
-              '& .MuiDrawer-paper': { 
-                boxShadow: 1,
-                bgcolor: '#fafafa',
-              } 
+      {/* Navigation Tabs - Centered */}
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        gap: 1, 
+        p: 2, 
+        flexWrap: 'wrap',
+        borderBottom: '1px solid rgba(15,23,42,0.08)',
+        bgcolor: 'white'
+      }}>
+        {navItems.map((item) => (
+          <Paper
+            key={item.path}
+            onClick={() => navigate(item.path)}
+            sx={{
+              px: 2.5,
+              py: 1,
+              borderRadius: 2,
+              cursor: 'pointer',
+              bgcolor: 'white',
+              border: '1px solid rgba(15,23,42,0.1)',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                bgcolor: 'primary.main',
+                color: 'white',
+                borderColor: 'primary.main',
+                transform: 'translateY(-2px)',
+                boxShadow: 2
+              }
             }}
           >
-            {drawer}
-          </Drawer>
-        )}
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {item.label}
+            </Typography>
+          </Paper>
+        ))}
+      </Box>
 
-        {/* Page Content */}
-        <Box sx={{ flex: 1, p: { xs: 2, sm: 3, md: 4 }, background: '#f5f7fa', overflowY: 'auto' }}>
-          <Routes>
-            <Route path="/" element={<CustomerDashboard />} />
-            <Route path="/book" element={<OrderForm />} />
-            <Route path="/orders" element={<OrderList />} />
-            <Route path="/orders/:id" element={<OrderDetails />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/driver" element={<DriverDashboard />} />
-          </Routes>
-        </Box>
+      {/* Main Content Area - Centered */}
+      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'flex-start', p: { xs: 2, sm: 3, md: 4 } }}>
+        <Container maxWidth="lg" sx={{ width: '100%' }}>
+          <Box sx={{
+            bgcolor: 'white',
+            borderRadius: 2,
+            boxShadow: 1,
+            p: { xs: 2, sm: 3, md: 4 }
+          }}>
+            <Routes>
+              <Route path="/" element={<CustomerDashboard />} />
+              <Route path="/book" element={<OrderForm />} />
+              <Route path="/orders" element={<OrderList />} />
+              <Route path="/orders/:id" element={<OrderDetails />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/driver" element={<DriverDashboard />} />
+            </Routes>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Footer - Centered */}
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        p: 2,
+        borderTop: '1px solid rgba(15,23,42,0.08)',
+        bgcolor: 'white',
+        mt: 'auto'
+      }}>
+        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+          © 2024 LaundryPro. All rights reserved.
+        </Typography>
       </Box>
     </Box>
   );
 }
+
 
 function App() {
   return (
@@ -127,3 +138,4 @@ function App() {
 }
 
 export default App;
+
