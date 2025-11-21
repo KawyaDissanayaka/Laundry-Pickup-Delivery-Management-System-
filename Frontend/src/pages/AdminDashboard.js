@@ -1,7 +1,18 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, Box, Grid, Typography, Paper } from '@mui/material';
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { ShoppingCart as ShoppingCartIcon, LocalShipping as LocalShippingIcon, Person as PersonIcon, TrendingUp as TrendingUpIcon } from '@mui/icons-material';
+import {
+  Card, CardContent, CardHeader, Box, Grid, Typography, Paper
+} from '@mui/material';
+import {
+  BarChart, Bar, PieChart, Pie, Tooltip, Legend,
+  CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell
+} from 'recharts';
+
+import {
+  ShoppingCart as ShoppingCartIcon,
+  LocalShipping as LocalShippingIcon,
+  Person as PersonIcon,
+  TrendingUp as TrendingUpIcon
+} from '@mui/icons-material';
 
 const mockData = {
   orders: 156,
@@ -24,39 +35,81 @@ const mockData = {
 };
 
 export default function AdminDashboard() {
+
   const StatCard = ({ icon, label, value, color }) => (
-    <Paper sx={{ p: 2.5, boxShadow: 1, borderRadius: 2, borderLeft: `4px solid ${color}` }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Box sx={{ color, fontSize: 28 }}>{icon}</Box>
-        <Box>
-          <Typography variant="body2" color="text.secondary">{label}</Typography>
-          <Typography variant="h6" sx={{ fontWeight: 700 }}>{value}</Typography>
-        </Box>
-      </Box>
+    <Paper
+      sx={{
+        p: 3,
+        background: "linear-gradient(180deg, #1976d2, #42a5f5)",
+        color: "white",
+        borderRadius: 3,
+        textAlign: "center",
+        boxShadow: 3,
+      }}
+    >
+      <Box sx={{ fontSize: 40, mb: 1, opacity: 0.9 }}>{icon}</Box>
+      <Typography sx={{ fontWeight: 600, fontSize: 18 }}>{value}</Typography>
+      <Typography sx={{ fontSize: 14, opacity: 0.85 }}>{label}</Typography>
     </Paper>
   );
 
   return (
-    <Box>
-      <Grid container spacing={2.5} sx={{ mb: 4 }}>
+    <Box
+      sx={{
+        p: 2,
+        backgroundImage: `url("/mnt/data/450BB379-882C-498A-AEF4-0D2B29E0B494.jpeg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}
+    >
+      {/* Top Blue Header */}
+      <Box
+        sx={{
+          p: 2.5,
+          mb: 3,
+          borderRadius: 3,
+          background: "linear-gradient(90deg, #0ea5e9, #2563eb)",
+          color: "white",
+          boxShadow: 4,
+        }}
+      >
+        <Typography sx={{ fontSize: 22, fontWeight: 700 }}>
+          Laundry Admin Dashboard
+        </Typography>
+        <Typography>{new Date().toLocaleString()}</Typography>
+      </Box>
+
+      {/* Stats Section */}
+      <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12} sm={6} md={3}>
-          <StatCard icon={<ShoppingCartIcon />} label="Total Orders" value={mockData.orders} color="#1976d2" />
+          <StatCard icon={<ShoppingCartIcon fontSize="inherit" />} label="Total Orders" value={mockData.orders} />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <StatCard icon={<LocalShippingIcon />} label="Pending" value={mockData.pending} color="#ff9800" />
+          <StatCard icon={<LocalShippingIcon fontSize="inherit" />} label="Pending Orders" value={mockData.pending} />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <StatCard icon={<PersonIcon />} label="Active Drivers" value={mockData.drivers} color="#4caf50" />
+          <StatCard icon={<PersonIcon fontSize="inherit" />} label="Active Drivers" value={mockData.drivers} />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <StatCard icon={<TrendingUpIcon />} label="Today Revenue" value={mockData.revenue} color="#9c27b0" />
+          <StatCard icon={<TrendingUpIcon fontSize="inherit" />} label="Today Revenue" value={mockData.revenue} />
         </Grid>
       </Grid>
 
+      {/* Charts Row */}
       <Grid container spacing={3}>
+        {/* Orders Trend */}
         <Grid item xs={12} md={8}>
-          <Card sx={{ boxShadow: 2, borderRadius: 2 }}>
-            <CardHeader title="Orders Trend" subheader="Last 7 days" sx={{ bgcolor: 'primary.light', color: 'white' }} />
+          <Card sx={{ borderRadius: 3, boxShadow: 4 }}>
+            <CardHeader
+              title="Orders Trend"
+              subheader="Last 7 days"
+              sx={{
+                background: "linear-gradient(90deg, #2563eb, #3b82f6)",
+                color: "white",
+                borderRadius: "12px 12px 0 0",
+              }}
+            />
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={mockData.chartData}>
@@ -65,22 +118,37 @@ export default function AdminDashboard() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="orders" fill="#1976d2" />
-                  <Bar dataKey="delivered" fill="#4caf50" />
+                  <Bar dataKey="orders" fill="#1e40af" />
+                  <Bar dataKey="delivered" fill="#16a34a" />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
           </Card>
         </Grid>
+
+        {/* Pie Chart */}
         <Grid item xs={12} md={4}>
-          <Card sx={{ boxShadow: 2, borderRadius: 2 }}>
-            <CardHeader title="Order Status" subheader="Distribution" sx={{ bgcolor: 'primary.light', color: 'white' }} />
+          <Card sx={{ borderRadius: 3, boxShadow: 4 }}>
+            <CardHeader
+              title="Order Status Breakdown"
+              sx={{
+                background: "linear-gradient(90deg, #2563eb, #3b82f6)",
+                color: "white",
+                borderRadius: "12px 12px 0 0",
+              }}
+            />
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
-                  <Pie data={mockData.statusData} cx="50%" cy="50%" labelLine={false} label={(entry) => entry.name} dataKey="value">
-                    {mockData.statusData.map((entry, idx) => (
-                      <Cell key={idx} fill={entry.color} />
+                  <Pie
+                    data={mockData.statusData}
+                    cx="50%"
+                    cy="50%"
+                    label
+                    dataKey="value"
+                  >
+                    {mockData.statusData.map((item, index) => (
+                      <Cell key={index} fill={item.color} />
                     ))}
                   </Pie>
                   <Tooltip />
