@@ -1,8 +1,8 @@
-# 🧺 MGE Laundry Pickup & Delivery Management System
+# 🧺  Laundry Pickup & Delivery Management System
 
-![GitHub last commit](https://img.shields.io/github/last-commit/your-username/mge-laundry-management-system)
-![GitHub repo size](https://img.shields.io/github/repo-size/your-username/mge-laundry-management-system)
-![GitHub issues](https://img.shields.io/github/issues/your-username/mge-laundry-management-system)
+![GitHub last commit](https://img.shields.io/github/last-commit/KawyaDissanayaka/Laundry-Pickup-Delivery-Management-System)
+![GitHub repo size](https://img.shields.io/github/repo-size/KawyaDissanayaka/Laundry-Pickup-Delivery-Management-System)
+![GitHub issues](https://img.shields.io/github/issues/KawyaDissanayaka/Laundry-Pickup-Delivery-Management-System)
 
 A **full-stack application** to manage laundry pickup, delivery, and order tracking, with a **Spring Boot backend** and **React frontend**.
 
