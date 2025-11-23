@@ -1,161 +1,89 @@
-# 🧺 Laundry Pickup & Delivery Management System  
-A full-stack system for managing laundry order booking, tracking, and delivery scheduling using **Spring Boot**, **React**, and **MongoDB**.
+# 🧺  Laundry Pickup & Delivery Management System
+
+![Last Commit](https://img.shields.io/badge/last%20commit-private-lightgrey)
+![Repo Size](https://img.shields.io/badge/repo%20size-private-lightgrey)
+![Issues](https://img.shields.io/badge/issues-private-lightgrey)
+
+
+A **full-stack application** to manage laundry pickup, delivery, and order tracking, with a **Spring Boot backend** and **React frontend**.
 
 ---
 
-## 🚀 Features
+## 🌟 Features
 
-### 👤 Customer Features
-- Online laundry booking  
-- Track order status (Pickup → Processing → Ready → Delivery)  
-- View past orders  
-- Receive SMS/Email notifications  
-
-### 🛠 Admin Features
-- Manage customers  
-- Add/edit laundry items  
-- Assign orders to delivery agents  
-- Export daily order summary as **PDF**  
-- View statistics & reports  
-
-### 🚚 Driver Features
-- View assigned pickups/deliveries  
-- Update order status (Picked / Delivered)  
+* Manage customers and their laundry orders
+* Assign pickup and delivery drivers
+* Track order status (Pending → Processing → Completed → Delivered)
+* Maintain service types and pricing
+* Responsive frontend built with React
+* Backend REST API built with Spring Boot
 
 ---
 
-## 🧪 Tech Stack
+## ⚡ Tech Stack
 
-### **Backend**
-- Spring Boot  
-- Spring Data MongoDB  
-- Spring Security (JWT Auth)  
-- Spring Scheduler  
-- JavaMail (Email Notifications)  
-- Twilio SMS API  
-- iText/OpenPDF (PDF Export)
+* **Backend:** Java 17, Spring Boot, Maven
+* **Frontend:** React, Node.js, npm
+* **Database:** MySQL / PostgreSQL / H2
 
-### **Frontend**
-- React (Vite)  
-- Axios  
-- React Router  
-- Tailwind / Material UI (optional)
+---
 
-### **Database**
-- MongoDB
+## 🚀 Getting Started
 
-### **DevOps**
-- Docker 
-- Docker Compose  
-- Git (Feature Branch Workflow)
+### Backend
+
+```bash
+cd mge-laundry-management-system
+./mvnw spring-boot:run
+```
+
+> Backend runs at `http://localhost:8080`
+> *Note:* Requires database configuration for full functionality.
+
+### Frontend
+
+```bash
+cd mge-laundry-frontend
+npm install
+npm start
+```
+
+> Frontend runs at `http://localhost:3000`
 
 ---
 
 ## 📁 Project Structure
-/project-root
-│── backend/
-│ ├── src/main/java/com/laundry
-│ │ ├── controller/
-│ │ ├── service/
-│ │ ├── repository/
-│ │ └── model/
-│ ├── resources/
-│ │ └── application.yml
-│ └── pom.xml
-│
-│── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── pages/
-│ │ ├── api/
-│ │ └── App.jsx
-│ ├── package.json
-│ └── vite.config.js
-│
-└── docker-compose.yml
 
+```
+mge-laundry-management-system/
+├─ src/                     # Backend source code (Spring Boot)
+├─ mge-laundry-frontend/    # Frontend source code (React)
+├─ pom.xml                  # Maven project file
+├─ mvnw, mvnw.cmd           # Maven wrapper
+└─ README.md
+```
 
 ---
 
-## ⚙️ Installation & Setup
+## 🔗 Repository
 
-### 1️⃣ Clone Repository
+Clone the project:
+
 ```bash
-git clone <YOUR_REPO_URL>
-cd laundry-management-system
+git clone https://github.com/your-username/mge-laundry-management-system.git
+```
 
-🖥 Backend Setup (Spring Boot)
-Install dependencies:
-cd backend
-mvn clean install
+---
 
-Run backend:
-mvn spring-boot:run
+## 📝 License
 
+This project is licensed under the **MIT License**.
+Feel free to use, modify, and contribute!
 
-Backend runs on:
-➡ http://localhost:8080
+---
 
-🌐 Frontend Setup (React)
-Install dependencies:
-cd frontend
-npm install
+## 💡 Notes
 
-Run frontend:
-npm run dev
-
-
-Frontend runs on:
-➡ http://localhost:3000
-
-🐳 Run Entire System with Docker
-docker-compose up --build
-
-
-This will run:
-
-MongoDB
-
-Spring Boot API
-
-React Frontend
-
-| Method | Endpoint                | Description               |
-| ------ | ----------------------- | ------------------------- |
-| POST   | /api/orders             | Place new order           |
-| GET    | /api/orders/{id}        | Get order details         |
-| PUT    | /api/orders/{id}/status | Update status             |
-| GET    | /api/orders/daily/pdf   | Download daily PDF report |
-| POST   | /api/auth/login         | JWT Login                 |
-
-📝 Sample Order JSON
-{
-  "customerId": "67641abcd1234",
-  "pickupDate": "2025-01-21",
-  "items": [
-    { "itemId": "shirt123", "quantity": 3 }
-  ]
-}
-
-📸 Screenshots (Optional)
-
-Add your UI screenshots here:
-
-/assets/screenshot1.png
-/assets/screenshot2.png
-
-🤝 Contributing
-
-Fork the project
-
-Create feature branch
-
-Commit & push
-
-Open Pull Request
-
-📜 License
-
-This project is licensed under the MIT License.
-
-
+* Backend requires a database connection for managing orders and customers.
+* Frontend can run independently to test UI and components.
+* Future updates may include driver app integration, notifications, and analytics dashboards.
