@@ -1,8 +1,9 @@
 # 🧺  Laundry Pickup & Delivery Management System
 
-![GitHub last commit](https://img.shields.io/github/last-commit/KawyaDissanayaka/Laundry-Pickup-Delivery-Management-System)
-![GitHub repo size](https://img.shields.io/github/repo-size/KawyaDissanayaka/Laundry-Pickup-Delivery-Management-System)
-![GitHub issues](https://img.shields.io/github/issues/KawyaDissanayaka/Laundry-Pickup-Delivery-Management-System)
+![Last Commit](https://img.shields.io/badge/last%20commit-private-lightgrey)
+![Repo Size](https://img.shields.io/badge/repo%20size-private-lightgrey)
+![Issues](https://img.shields.io/badge/issues-private-lightgrey)
+
 
 A **full-stack application** to manage laundry pickup, delivery, and order tracking, with a **Spring Boot backend** and **React frontend**.
 
