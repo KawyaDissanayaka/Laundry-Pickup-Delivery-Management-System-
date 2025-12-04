@@ -1,7 +1,7 @@
 {
   "name": "laundry-pickup-delivery-management-system",
   "version": "1.0.0",
-  "description": "Laundry Pickup & Delivery Management System",
+  "description": "Laundry Presentation this one",
   "private": true,
   "scripts": {
     "start": "cd Frontend && npm start",

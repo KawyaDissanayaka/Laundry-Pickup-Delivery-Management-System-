@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-import { ThemeProvider, createTheme, CssBaseline, Box, AppBar, Toolbar, Typography, Container, Paper, useMediaQuery } from '@mui/material';
+import { ThemeProvider, createTheme, CssBaseline, Box, AppBar, Toolbar, Typography, Container, Paper, useMediaQuery, Button } from '@mui/material';
 import OrderForm from './pages/OrderForm';
 import OrderList from './pages/OrderList';
 import OrderDetails from './pages/OrderDetails';
 import AdminDashboard from './pages/AdminDashboard';
 import DriverDashboard from './pages/DriverDashboard';
 import CustomerDashboard from './pages/CustomerDashboard';
+import About from './pages/About';
+import Service from './pages/Service';
+import Contact from './pages/Contact';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import logoTopRight from './laundry logo.PNG';
 
 const theme = createTheme({
   palette: {
@@ -31,59 +37,71 @@ function AppContent() {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'Book Pickup', path: '/book' },
-    { label: 'My Orders', path: '/orders' },
-    { label: 'Admin', path: '/admin' },
-    { label: 'Driver', path: '/driver' },
+    { label: 'About', path: '/about' },
+    { label: 'Our Service', path: '/service' },
+    { label: 'Contact Us', path: '/contact' },
   ];
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: 'background.default' }}>
-      {/* AppBar - Centered */}
-      <AppBar position="sticky" sx={{ boxShadow: 1, background: 'linear-gradient(to right, #1976d2, #1565c0)' }}>
-        <Toolbar sx={{ maxWidth: '1400px', margin: '0 auto', width: '100%' }}>
-          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700, textAlign: 'center' }}>
-            LaundryPro Management System
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
-      {/* Navigation Tabs - Centered */}
+      {/* Navigation Tabs with Logo on Left - Centered with Login/Sign Up */}
       <Box sx={{ 
         display: 'flex', 
-        justifyContent: 'center', 
-        gap: 1, 
-        p: 2, 
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: 2, 
+        p: 1.5, 
         flexWrap: 'wrap',
         borderBottom: '1px solid rgba(15,23,42,0.08)',
         bgcolor: 'white'
       }}>
-        {navItems.map((item) => (
-          <Paper
-            key={item.path}
-            onClick={() => navigate(item.path)}
-            sx={{
-              px: 2.5,
-              py: 1,
-              borderRadius: 2,
-              cursor: 'pointer',
-              bgcolor: 'white',
-              border: '1px solid rgba(15,23,42,0.1)',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                bgcolor: 'primary.main',
-                color: 'white',
-                borderColor: 'primary.main',
-                transform: 'translateY(-2px)',
-                boxShadow: 2
-              }
-            }}
+        <Box component="img" src={logoTopRight} alt="LaundryPro logo" sx={{ height: 80, width: 'auto' }} />
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, flex: 1, flexWrap: 'wrap' }}>
+          {navItems.map((item) => (
+            <Paper
+              key={item.path}
+              onClick={() => navigate(item.path)}
+              sx={{
+                px: 2.5,
+                py: 1,
+                borderRadius: 2,
+                cursor: 'pointer',
+                bgcolor: 'white',
+                border: '1px solid rgba(15,23,42,0.1)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  bgcolor: 'primary.main',
+                  color: 'white',
+                  borderColor: 'primary.main',
+                  transform: 'translateY(-2px)',
+                  boxShadow: 2
+                }
+              }}
+            >
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                {item.label}
+              </Typography>
+            </Paper>
+          ))}
+        </Box>
+        <Box sx={{ display: 'flex', gap: 1.5 }}>
+          <Button 
+            variant="outlined" 
+            size="small"
+            onClick={() => navigate('/login')}
+            sx={{ borderColor: 'primary.main', color: 'primary.main', fontWeight: 600 }}
           >
-            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-              {item.label}
-            </Typography>
-          </Paper>
-        ))}
+            Login
+          </Button>
+          <Button 
+            variant="contained" 
+            size="small"
+            onClick={() => navigate('/signup')}
+            sx={{ bgcolor: 'primary.main', color: 'white', fontWeight: 600 }}
+          >
+            Sign Up
+          </Button>
+        </Box>
       </Box>
 
       {/* Main Content Area - Centered */}
@@ -102,6 +120,11 @@ function AppContent() {
               <Route path="/orders/:id" element={<OrderDetails />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/driver" element={<DriverDashboard />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/service" element={<Service />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
             </Routes>
           </Box>
         </Container>

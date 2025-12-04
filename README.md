@@ -1,4 +1,4 @@
-# 🧺  Laundry Pickup & Delivery Management System
+# 🧺 Laundry Presentation this one
 
 ![Last Commit](https://img.shields.io/badge/last%20commit-private-lightgrey)
 ![Repo Size](https://img.shields.io/badge/repo%20size-private-lightgrey)
